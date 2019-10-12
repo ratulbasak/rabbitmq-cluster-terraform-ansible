@@ -1,0 +1,2 @@
+ADMIN_PASS: qweqwe
+rabbitmq_erlang_cookie_file: /var/lib/rabbitmq/.erlang.cookie

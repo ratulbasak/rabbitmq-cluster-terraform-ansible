@@ -1,0 +1,5 @@
+---
+# Handler for rabbitmq notifications
+
+- name: restart rabbitmq
+  service: name=rabbitmq-server state=restarted

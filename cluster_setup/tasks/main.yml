@@ -1,0 +1,27 @@
+---
+- name: stopping rabbitmq app
+  command: rabbitmqctl stop_app
+  become: true
+
+- name: resetting rabbitmq
+  command: rabbitmqctl reset
+  become: true
+
+- name: joining rabbitmq node to cluster
+  command: rabbitmqctl join_cluster rabbit@rabbit-node1
+  become: true
+
+- name: starting rabbitmq app
+  command: rabbitmqctl start_app
+  become: true
+
+- name: getting cluster_status
+  command: rabbitmqctl cluster_status
+  become: true
+  register: cluster_status
+
+- debug: var=cluster_status.stdout_lines
+
+- name: setting policy that allows for queues mirroring to all nodes in the cluster
+  command: rabbitmqctl set_policy ha-all "." '{"ha-mode":"all"}'
+  become: true

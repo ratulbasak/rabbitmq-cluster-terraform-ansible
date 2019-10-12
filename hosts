@@ -1,0 +1,23 @@
+[node1]
+rabbit-node1 ansible_ssh_host=18.184.163.107
+
+[node2]
+rabbit-node2 ansible_ssh_host=52.59.53.227
+
+[node3]
+rabbit-node3 ansible_ssh_host=18.184.222.69
+
+[workers]
+rabbit-node2
+rabbit-node3
+
+[all_group]
+rabbit-node1
+rabbit-node2
+rabbit-node3
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_user=ubuntu
+ansible_private_key_file=/home/ratul/Desktop/vagrant/rabbit-cluster/main.pem
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
